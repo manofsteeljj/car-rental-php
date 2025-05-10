@@ -1,0 +1,819 @@
+/* 
+ * DriveEasy Rentals - Admin Stylesheet
+ * Styles for the admin dashboard and related pages
+ */
+
+/* ======== Base Admin Styles ======== */
+:root {
+    --admin-primary: #3498db;
+    --admin-primary-dark: #2980b9;
+    --admin-secondary: #f39c12;
+    --admin-dark: #2c3e50;
+    --admin-light: #ecf0f1;
+    --admin-text: #333333;
+    --admin-text-light: #7f8c8d;
+    --admin-success: #2ecc71;
+    --admin-warning: #f1c40f;
+    --admin-danger: #e74c3c;
+    --admin-border: #ddd;
+    --admin-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --admin-radius: 4px;
+    --admin-transition: all 0.3s ease;
+    --admin-sidebar-width: 250px;
+    --admin-header-height: 60px;
+  }
+  
+  body.admin-page {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* ======== Admin Layout ======== */
+  .admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .admin-content {
+    flex: 1;
+    padding: 0;
+    margin-left: var(--admin-sidebar-width);
+    transition: var(--admin-transition);
+  }
+  
+  .admin-container {
+    padding: 2rem;
+  }
+  
+  /* ======== Admin Header ======== */
+  .admin-topbar {
+    background-color: white;
+    height: var(--admin-header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    box-shadow: var(--admin-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .topbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-toggle {
+    background: none;
+    border: none;
+    color: var(--admin-text);
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    display: none;
+  }
+  
+  .topbar-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--admin-text);
+  }
+  
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .topbar-icon {
+    color: var(--admin-text-light);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--admin-transition);
+  }
+  
+  .topbar-icon:hover {
+    color: var(--admin-primary);
+  }
+  
+  .admin-user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .admin-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--admin-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+  }
+  
+  .admin-user-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-user-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .admin-user-role {
+    font-size: 0.8rem;
+    color: var(--admin-text-light);
+  }
+  
+  /* ======== Admin Sidebar ======== */
+  .admin-sidebar {
+    width: var(--admin-sidebar-width);
+    background-color: var(--admin-dark);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    transition: var(--admin-transition);
+    overflow-y: auto;
+  }
+  
+  .sidebar-header {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .admin-logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+  }
+  
+  .admin-logo-text {
+    color: var(--admin-primary);
+  }
+  
+  .admin-logo-subtext {
+    color: white;
+    font-size: 1rem;
+    margin-left: 4px;
+  }
+  
+  .sidebar-menu {
+    padding: 1.5rem 0;
+  }
+  
+  .sidebar-title {
+    padding: 0 1.5rem;
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .sidebar-nav {
+    list-style: none;
+  }
+  
+  .sidebar-item {
+    margin-bottom: 0.25rem;
+  }
+  
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--admin-transition);
+    text-decoration: none;
+  }
+  
+  .sidebar-link i {
+    margin-right: 0.75rem;
+    width: 20px;
+    text-align: center;
+  }
+  
+  .sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+  
+  .sidebar-link.active {
+    background-color: var(--admin-primary);
+    color: white;
+  }
+  
+  .sidebar-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 1.5rem 0;
+  }
+  
+  /* ======== Admin Dashboard ======== */
+  .dashboard-container {
+    padding: 2rem;
+  }
+  
+  .dashboard-header {
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-header h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .dashboard-header p {
+    color: var(--admin-text-light);
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-card {
+    background-color: white;
+    border-radius: var(--admin-radius);
+    box-shadow: var(--admin-shadow);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--admin-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+  
+  .stat-content {
+    flex: 1;
+  }
+  
+  .stat-content h3 {
+    font-size: 0.9rem;
+    color: var(--admin-text-light);
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-link {
+    font-size: 0.85rem;
+    color: var(--admin-primary);
+  }
+  
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-widget {
+    background-color: white;
+    border-radius: var(--admin-radius);
+    box-shadow: var(--admin-shadow);
+    overflow: hidden;
+  }
+  
+  .widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--admin-border);
+  }
+  
+  .widget-header h2 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  
+  .widget-content {
+    padding: 1.5rem;
+  }
+  
+  .category-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .category-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .category-name {
+    flex: 0 0 120px;
+    font-weight: 500;
+  }
+  
+  .category-progress {
+    flex: 1;
+    height: 8px;
+    background-color: var(--admin-light);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: var(--admin-primary);
+  }
+  
+  .category-count {
+    flex: 0 0 60px;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--admin-text-light);
+  }
+  
+  .quick-actions {
+    margin-bottom: 2rem;
+  }
+  
+  .quick-actions h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  /* ======== Admin Data Table ======== */
+  .data-card {
+    background-color: white;
+    border-radius: var(--admin-radius);
+    box-shadow: var(--admin-shadow);
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--admin-border);
+  }
+  
+  .data-table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    color: var(--admin-text);
+  }
+  
+  .data-table tbody tr:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .table-footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--admin-text-light);
+  }
+  
+  .car-thumbnail {
+    width: 80px;
+  }
+  
+  .car-thumbnail img {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: var(--admin-radius);
+  }
+  
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .delete-form {
+    display: inline;
+  }
+  
+  /* ======== Admin Forms ======== */
+  .admin-form-container {
+    background-color: white;
+    border-radius: var(--admin-radius);
+    box-shadow: var(--admin-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .admin-form h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--admin-border);
+  }
+  
+  .form-section {
+    margin-bottom: 2rem;
+  }
+  
+  .form-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--admin-text);
+  }
+  
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+  
+  .image-preview {
+    width: 200px;
+    height: 150px;
+    background-color: var(--admin-light);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+  
+  .image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--admin-border);
+  }
+  
+  /* ======== Admin Filter Card ======== */
+  .filter-card {
+    background-color: white;
+    border-radius: var(--admin-radius);
+    box-shadow: var(--admin-shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* ======== Badges ======== */
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .badge-success {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: var(--admin-success);
+  }
+  
+  .badge-warning {
+    background-color: rgba(241, 196, 15, 0.15);
+    color: #9b7300;
+  }
+  
+  .badge-danger {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: var(--admin-danger);
+  }
+  
+  .badge-secondary {
+    background-color: rgba(127, 140, 141, 0.15);
+    color: var(--admin-text-light);
+  }
+  
+  /* ======== Admin Login Page ======== */
+  .admin-login-page {
+    background-color: #f5f7fa;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .admin-login-container {
+    display: flex;
+    width: 900px;
+    max-width: 90%;
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+    box-shadow: var(--admin-shadow);
+  }
+  
+  .admin-login-card {
+    background-color: white;
+    padding: 3rem;
+    width: 50%;
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .admin-login-form {
+    margin-bottom: 2rem;
+  }
+  
+  .back-to-website {
+    text-align: center;
+  }
+  
+  .back-to-website a {
+    color: var(--admin-text-light);
+    font-size: 0.9rem;
+  }
+  
+  .back-to-website a:hover {
+    color: var(--admin-primary);
+  }
+  
+  .admin-login-info {
+    background-image: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 3rem;
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-info-content {
+    width: 100%;
+  }
+  
+  .login-info-content h2 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+  
+  .login-info-content p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .feature-item i {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+  }
+  
+  /* ======== Booking Details ======== */
+  .booking-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .booking-detail-card {
+    background-color: white;
+    border-radius: var(--admin-radius);
+    box-shadow: var(--admin-shadow);
+    padding: 1.5rem;
+  }
+  
+  .booking-detail-card h3 {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--admin-border);
+  }
+  
+  .info-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .info-label {
+    font-size: 0.85rem;
+    color: var(--admin-text-light);
+    margin-bottom: 0.35rem;
+  }
+  
+  .info-value {
+    font-weight: 500;
+  }
+  
+  .booking-timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-top: 1.5rem;
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
+  
+  .timeline-item:before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--admin-primary);
+    z-index: 1;
+  }
+  
+  .timeline-item:after {
+    content: '';
+    position: absolute;
+    left: -23px;
+    top: 15px;
+    width: 2px;
+    height: calc(100% - 15px);
+    background-color: var(--admin-border);
+  }
+  
+  .timeline-item:last-child:after {
+    display: none;
+  }
+  
+  .timeline-date {
+    font-size: 0.85rem;
+    color: var(--admin-text-light);
+    margin-bottom: 0.25rem;
+  }
+  
+  .timeline-title {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  .timeline-description {
+    font-size: 0.9rem;
+    color: var(--admin-text-light);
+  }
+  
+  .booking-actions-card {
+    background-color: white;
+    border-radius: var(--admin-radius);
+    box-shadow: var(--admin-shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .booking-actions-card h3 {
+    margin-bottom: 1.25rem;
+  }
+  
+  .status-update-form {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* ======== Responsive Admin Styles ======== */
+  @media (max-width: 992px) {
+    .admin-sidebar {
+      transform: translateX(-100%);
+    }
+    
+    .admin-sidebar.active {
+      transform: translateX(0);
+    }
+    
+    .admin-content {
+      margin-left: 0;
+    }
+    
+    .menu-toggle {
+      display: block;
+    }
+    
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .booking-details-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .admin-login-container {
+      flex-direction: column;
+    }
+    
+    .admin-login-card,
+    .admin-login-info {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .admin-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .admin-topbar {
+      padding: 0 1rem;
+    }
+    
+    .topbar-right {
+      gap: 1rem;
+    }
+    
+    .admin-user-info {
+      display: none;
+    }
+    
+    .admin-form-container {
+      padding: 1.5rem;
+    }
+    
+    .data-table th,
+    .data-table td {
+      padding: 0.75rem;
+    }
+    
+    .admin-login-card {
+      padding: 2rem;
+    }
+  }
+  
